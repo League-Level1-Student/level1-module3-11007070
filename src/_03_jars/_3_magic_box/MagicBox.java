@@ -15,6 +15,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
@@ -38,6 +39,7 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	 */
 
 	BufferedImage backgroundImage;
+	MediaPalace mp = new MediaPalace();
 
 
 	@Override
@@ -48,11 +50,12 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 		} catch (Exception w) {
 			System.err.println(w.getMessage());
 		}
-	}
+	} 
 
 	private void createUI() {
 		JFrame frame = new JFrame("The Magic Box contains many secrets...");
 		frame.add(this);
+		frame.addMouseListener(this);
 		setPreferredSize(new Dimension(backgroundImage.getWidth(), backgroundImage.getHeight()));
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,7 +79,22 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
+		//396 , 366
+		//337 , 172
+		//198 , 538
+		//System.out.println(e.getX() + " , " + e.getY());
+		int x = e.getX();
+		int y = e.getY();
 		
+		if (x == 396 && y == 366) {
+			JOptionPane.showMessageDialog(null, mp.loadImageFromWithinProject("KeepCalm&FishOn.png"));
+		}
+		else if (x == 337 && y == 172) {
+			JOptionPane.showMessageDialog(null, mp.loadImageFromWithinProject("brickWall.jpeg"));
+		}
+		else if (x == 198 && y == 538) {
+			JOptionPane.showMessageDialog(null, mp.loadImageFromWithinProject("booTShirt.jpg"));
+		}
 	}
 
 	@Override
