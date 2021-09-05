@@ -9,15 +9,18 @@ import java.io.IOException;
 import javax.swing.JApplet;
 
 public class CowTimer {
-
+	private int minutes;
 	/*
 	 * 1. Make a constructor for the CowTimer class that initializes the minutes
 	 * variable
 	 */
+	CowTimer(int minutes) {
+		this.minutes = minutes;
+	}
 
 	/* 4. Complete the main method of the CowTimerRunner class */
 
-	private int minutes;
+	
 
 	public void setTime(int minutes) {
 		this.minutes = minutes;
@@ -29,6 +32,13 @@ public class CowTimer {
 		 * 2. Count down the minutes, print the current minute then sleep for the number
 		 * of minutes using Thread.sleep(int milliseconds).
 		 */
+		int mins = minutes;
+		for (int i = 0; i < minutes; i++) {
+			System.out.println(mins);
+			Thread.sleep(1000);
+			mins--;
+		}
+		playSound("moo.wav");
 
 		/*
 		 * 3. When the timer is finished, use the playSound method to play a moo sound.
